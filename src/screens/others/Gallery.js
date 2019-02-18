@@ -51,7 +51,7 @@ class Gallery extends React.Component{
         />
     );
 
-    _keyExtractor = (item) => item.id;
+    _keyExtractor = (item) => item.id.toString();
 
     render(): React.ReactNode {
         return (

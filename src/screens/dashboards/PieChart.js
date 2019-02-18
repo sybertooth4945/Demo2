@@ -4,7 +4,7 @@ import {DoughnutChartBasic, DoughnutChartInnerLabel, DoughnutChartHollow, Doughn
 import {Header} from '../../components';
 import {NavigationActions} from "react-navigation";
 
-class DoughnutChart extends React.Component{
+class PieChart extends React.Component{
     render(): React.ReactNode {
         return (
             <View>
@@ -24,4 +24,4 @@ class DoughnutChart extends React.Component{
     }
 }
 
-export {DoughnutChart};
+export {PieChart};

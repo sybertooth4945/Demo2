@@ -56,7 +56,7 @@ class DoughnutChartBasic extends React.Component{
                             width={scale(this.size)}
                             height={scale(this.size)}
                             padAngle={4}
-                            innerRadius={scale(70)}
+                            innerRadius={scale(60)}
                             colorScale={this._populateColors()}
                             data={this.state.data}
                             padding={scale(45)}

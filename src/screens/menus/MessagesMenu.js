@@ -2,6 +2,8 @@ import React from "react";
 import {View, FlatList} from "react-native";
 import {createStackNavigator, createAppContainer, NavigationActions} from 'react-navigation';
 import {ListItem, Header} from '../../components';
+import {Chat} from '../messages/Chat';
+import {ChatList} from '../messages/ChatList';
 
 const MessagesRoutes = [
     {
@@ -30,7 +32,7 @@ class MessagesMenu extends React.Component{
         <ListItem
             type='normal'
             label={item.label}
-            // onPress={() => this.props.navigation.navigate(item.id)}
+            onPress={() => this.props.navigation.navigate(item.id)}
         />
     );
 
@@ -60,7 +62,7 @@ class MessagesMenuWithHeader extends React.Component{
         <ListItem
             type='normal'
             label={item.label}
-            // onPress={() => this.props.navigation.navigate(item.id)}
+            onPress={() => this.props.navigation.navigate(item.id)}
         />
     );
 
@@ -87,7 +89,8 @@ class MessagesMenuWithHeader extends React.Component{
 
 const MessagesNavigator = createStackNavigator({
     messageMenu: MessagesMenuWithHeader,
-
+    chat: Chat,
+    chatList: ChatList,
 },{
     headerMode: 'none'
 });

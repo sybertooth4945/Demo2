@@ -2,7 +2,7 @@ import React from "react";
 import {View, FlatList} from "react-native";
 import {createStackNavigator, createAppContainer, NavigationActions} from 'react-navigation';
 import {ListItem, Header} from '../../components';
-import {DoughnutChart} from '../dashboards/DoughnutChart';
+import {PieChart} from '../dashboards/PieChart';
 
 const DashboardRoutes = [
     {
@@ -80,7 +80,7 @@ class DashboardMenuWithHeader extends React.Component{
 
 const DashboardNavigator = createStackNavigator({
     dashBoardMenu: DashboardMenuWithHeader,
-    doughnutChart: DoughnutChart,
+    doughnutChart: PieChart,
 },{
     headerMode: 'none'
 });

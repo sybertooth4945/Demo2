@@ -6,7 +6,6 @@ import {formatNumber} from '../../utils/formatNumber';
 import {NavigationActions} from "react-navigation";
 import {Gallery} from '../others/Gallery'
 import {TouchableRipple} from "react-native-paper";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {users} from "../../data";
 
 const screenSize = Dimensions.get('window');

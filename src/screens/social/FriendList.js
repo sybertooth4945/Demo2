@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {View, Text, FlatList, StyleSheet, Image, TouchableOpacity, TextInput} from 'react-native';
-import {Header} from "../../components";
+import {View, Text, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {Header, SearchBar} from "../../components";
 import {users} from '../../data';
 import {scale, scaleVertical} from '../../utils/scale';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {NavigationActions} from "react-navigation";
 
@@ -41,22 +40,9 @@ class FriendList extends React.Component{
                 label='FRIEND LIST'
                 onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
             />
-            <View style={{backgroundColor: '#e5e5e5'}}>
-                <View style={styles.searchContainer}>
-                    <View style={styles.icon}>
-                        <Icon
-                            name="search"
-                            color='#bcbcbc'
-                            size={scale(20)}
-                        />
-                    </View>
-                    <TextInput
-                        onChangeText={this._onSearchTextChange}
-                        style={styles.textInput}
-                        placeholder='Search'
-                    />
-                </View>
-            </View>
+            <SearchBar
+                onSearchTextChange={this._onSearchTextChange}
+            />
         </View>
     );
 
@@ -76,7 +62,7 @@ class FriendList extends React.Component{
         </TouchableOpacity>
     );
 
-    _keyExtractor = (item) => item.id;
+    _keyExtractor = (item) => item.id.toString();
 
     _ItemSeparator = () => <View style={styles.separator} />;
 
@@ -121,24 +107,6 @@ const styles = StyleSheet.create({
         fontSize: scale(14),
         color: '#999',
     },
-    searchContainer: {
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        alignSelf: 'stretch',
-        alignItems: 'center',
-        margin: 10,
-        borderRadius: 25,
-    },
-    icon: {
-        width: scale(42)+24-12,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    textInput: {
-        flex: 1,
-        fontSize: scale(18),
-        color: 'black',
-    }
 });
 
 export {FriendList};
