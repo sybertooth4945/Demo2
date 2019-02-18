@@ -22,11 +22,11 @@ const OthersRoutes = [
     },
     {
         id: 'galleryV1',
-        label: 'GalleryV1',
+        label: 'Gallery V1',
     },
     {
         id: 'galleryV2',
-        label: 'GalleryV2',
+        label: 'Gallery V2',
     },
 ];
 

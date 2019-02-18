@@ -6,6 +6,6 @@ export * from './GridItem';
 export * from './GalleryItem';
 export * from './ProgressBar';
 export * from './PieItem';
-export * from './CardModal';
+export * from './Card';
 
 

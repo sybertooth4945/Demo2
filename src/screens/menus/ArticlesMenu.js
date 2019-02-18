@@ -2,6 +2,7 @@ import React from "react";
 import {View, FlatList} from "react-native";
 import {createStackNavigator, createAppContainer, NavigationActions} from 'react-navigation';
 import {ListItem, Header} from '../../components';
+import {ArticleV1} from '../articles/ArticleV1';
 
 const ArticlesRoutes = [
     {
@@ -34,7 +35,7 @@ class ArticlesMenu extends React.Component{
         <ListItem
             type='normal'
             label={item.label}
-            // onPress={() => this.props.navigation.navigate(item.id)}
+            onPress={() => this.props.navigation.navigate(item.id)}
         />
     );
 
@@ -64,7 +65,7 @@ class ArticlesMenuWithHeader extends React.Component{
         <ListItem
             type='normal'
             label={item.label}
-            // onPress={() => this.props.navigation.navigate(item.id)}
+            onPress={() => this.props.navigation.navigate(item.id)}
         />
     );
 
@@ -91,7 +92,7 @@ class ArticlesMenuWithHeader extends React.Component{
 
 const ArticlesNavigator = createStackNavigator({
     articlesMenu: ArticlesMenuWithHeader,
-
+    articlesV1: ArticleV1,
 },{
     headerMode: 'none'
 });

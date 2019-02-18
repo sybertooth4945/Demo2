@@ -9,11 +9,11 @@ import {FriendList} from '../social/FriendList';
 const SocialRoutes = [
     {
         id: 'profile',
-        label: 'ProfileV1',
+        label: 'Profile V1',
     },
     {
         id: 'profile2',
-        label: 'ProfileV2',
+        label: 'Profile V2',
     },
     {
         id: 'profileSetting',

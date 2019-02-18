@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, ScrollView, StyleSheet, View, ImageBackground, Text, Image,AsyncStorage} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, View, ImageBackground, Text, Image, AsyncStorage} from 'react-native';
 import {Header} from '../../components';
 import {users} from '../../data';
 import {scale, scaleVertical} from '../../utils/scale';
@@ -18,7 +18,7 @@ class ProfileV2 extends React.Component{
         const id = this.props.navigation.getParam('id', 0);
         this.state = {
             isFollowed: false,
-            data: users.find(item => item.id == id),
+            data: users.find(item => item.id === id),
         };
     }
 

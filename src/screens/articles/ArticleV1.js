@@ -1,85 +1,47 @@
-import React, { Component } from 'react';
-import {StyleSheet, ScrollView,} from 'react-native';
+import React from 'react';
+import {StyleSheet, FlatList, View} from 'react-native';
+import {articles} from '../../data';
+import {Header, Card} from "../../components";
+import {NavigationActions} from "react-navigation";
 
-import {CardModal} from '../../components';
-import NavigationBar from 'react-native-navbar';
-
-class ArticleV1 extends Component {
+class ArticleV1 extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            scroll: true,
+            data: articles,
         }
     }
 
-    renderNav() {
-        const titleConfig = {
-            title: 'react-native-card-modal',
-        };
-        return (
-            <NavigationBar
-                title={titleConfig}/>
-        )
-    }
+    _renderHeader = () => (
+        <Header
+            type='noElevation'
+            label='ARTICLE V1'
+            onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+        />
+    );
 
-    disableScroll() {
-        this.setState({scroll: !this.state.scroll});
-    }
+    _renderItem = ({item}) => (
+        <Card
+            photo={item.photo}
+            header={item.header}
+            text={item.text}
+        />
+    );
 
-    render() {
+    _keyExtractor = (item) => item.id.toString();
+
+    render(): React.ReactNode {
         return (
-            <ScrollView scrollEnabled={this.state.scroll} style={styles.container}>
-                <CardModal title={'Walmart'}
-                           description={'Electronics, home, furniture, and more'}
-                           image={require('../../assets/articles-images/walmart-logo.png')}
-                           color={'#0E48BE'}
-                           content={'What started small, with a single discount store and the simple idea of selling more for less, has grown over the last 50 years into the largest retailer in the world. Today, nearly 260 million customers visit our more than 11,500 stores under 63 banners in 28 countries and e-commerce sites in 11 countries each week. With fiscal year 2016 revenue of $482.1 billion, Walmart employs 2.3 million associates worldwide – 1.5 million in the U.S. alone. It’s all part of our unwavering commitment to creating opportunities and bringing value to customers and communities around the world.'}
-                           onClick={() => this.disableScroll()}
-                           due={3}
+            <View style={{flex: 1}}>
+                <FlatList
+                    data={this.state.data}
+                    keyExtractor={this._keyExtractor}
+                    renderItem={this._renderItem}
+                    ListHeaderComponent={this._renderHeader}
                 />
-                <CardModal title={'Taco Bell'}
-                           description={'Tacos, burritos, and more tacos'}
-                           image={require('../../assets/articles-images/tacobell-logo.jpg')}
-                           color={'#662BAB'}
-                           content={'Taco Bell is an American chain of fast-food restaurants based in Irvine, California. A subsidiary of Yum! Brands, Inc., they serve a variety of Tex-Mex foods, including tacos, burritos, quesadillas, nachos, other specialty items, and a variety of "value menu" items. Taco Bell serves more than 2 billion customers each year in 6,407 restaurants, more than 80 percent of which are owned and operated by independent franchisees and licensees.'}
-                           onClick={() => this.disableScroll()}
-                           due={5}
-                />
-                <CardModal title={'Walgreens'}
-                           description={'Prescribed medicine, contact lenses, and more'}
-                           image={require('../../assets/articles-images/walgreens-logo.png')}
-                           color={'#fc3758'}
-                           content={'In December 2014, Walgreens completed its strategic combination with Alliance Boots to establish Walgreens Boots Alliance, Inc., forging the first global pharmacy-led, health and wellbeing enterprise. The combination brought together two leading companies with iconic brands, complementary geographic footprints, shared values and a heritage of trusted health care services through community pharmacy care and pharmaceutical wholesaling.  Both companies have more than a century’s worth of experience in customer and patient care. Walgreens is today part of the Retail Pharmacy USA division of Walgreens Boots Alliance.'}
-                           onClick={() => this.disableScroll()}
-                           due={4}
-                />
-                <CardModal title={'Apple'}
-                           description={'iPhone, iPad, Mac, and Apple Watch'}
-                           image={require('../../assets/articles-images/apple-logo.png')}
-                           color={'black'}
-                           content={'Apple is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services.'}
-                           onClick={() => this.disableScroll()}
-                           due={1}
-                />
-            </ScrollView>
+            </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#ddd',
-        paddingTop: 20
-    },
-    box: {
-        backgroundColor: 'red'
-    },
-    button: {
-        borderColor: 1,
-        borderWidth: 1,
-    }
-});
-
 export {ArticleV1};
-
