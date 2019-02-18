@@ -98,7 +98,7 @@ class Chat extends React.Component{
                         <Icon
                             name="plus"
                             color='#bcbcbc'
-                            size={scale(20)}
+                            size={scale(24)}
                         />
                     </View>
                     <View style={styles.textInputContainer}>
@@ -174,15 +174,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#e5e5e5',
         marginRight: scale(35)+20,
         paddingVertical: 8,
-        paddingHorizontal: 10,
+        paddingLeft: 12,
     },
     textContainerReverse: {
+        alignSelf: 'flex-end',
         borderRadius: 20,
         backgroundColor: '#41abe1',
         marginLeft: scale(35)+20,
         marginRight: 20,
         paddingVertical: 8,
-        paddingHorizontal: 12,
+        paddingLeft: 12,
     }
 });
 

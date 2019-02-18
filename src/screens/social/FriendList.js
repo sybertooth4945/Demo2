@@ -64,8 +64,6 @@ class FriendList extends React.Component{
 
     _keyExtractor = (item) => item.id.toString();
 
-    _ItemSeparator = () => <View style={styles.separator} />;
-
     render(): React.ReactNode {
         return (
             <View style={{flex: 1}}>
@@ -73,7 +71,6 @@ class FriendList extends React.Component{
                     data={this.state.data}
                     keyExtractor={this._keyExtractor}
                     renderItem={this._renderItem}
-                    ItemSeparatorComponent={this._ItemSeparator}
                     ListHeaderComponent={this._renderHeader}
                 />
             </View>
@@ -82,12 +79,6 @@ class FriendList extends React.Component{
 }
 
 const styles = StyleSheet.create({
-    separator: {
-        height: 1,
-        width: '81%',
-        marginLeft: '19%',
-        backgroundColor: '#CED0CE',
-    },
     container: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -97,6 +88,12 @@ const styles = StyleSheet.create({
         width: scale(42),
         borderRadius: 25,
         margin: 12,
+    },
+    details: {
+        flex: 1,
+        borderBottomWidth: 1,
+        borderColor: '#CED0CE',
+        paddingVertical: 12,
     },
     name: {
         fontWeight: 'bold',
