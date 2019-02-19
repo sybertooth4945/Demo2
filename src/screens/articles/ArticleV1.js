@@ -14,7 +14,7 @@ class ArticleV1 extends React.Component{
 
     _renderHeader = () => (
         <Header
-            type='noElevation'
+            type='normal'
             label='ARTICLE V1'
             onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
         />
@@ -22,6 +22,7 @@ class ArticleV1 extends React.Component{
 
     _renderItem = ({item}) => (
         <Card
+            type='full'
             photo={item.photo}
             header={item.header}
             text={item.text}

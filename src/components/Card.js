@@ -7,26 +7,38 @@ import {scale} from "../utils/scale";
 const screenSize = Dimensions.get('window');
 
 class Card extends React.Component{
+
+    _switchCard = (type) => {
+        switch (type) {
+            case 'full':
+                return (
+                    <TouchableOpacity
+                        onPress={this.props.onPress}
+                        activeOpacity={0.8}>
+                        <ImageBackground
+                            source={this.props.photo}
+                            resideMode='cover'
+                            style={styles.imageBackground}>
+                            <LinearGradient
+                                style={{flex: 1, alignSelf: 'stretch', justifyContent: 'flex-end'}}
+                                colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(39,62,84,0.82)']}>
+                                <Text style={styles.header}>{this.props.header}</Text>
+                                <Text
+                                    numberOfLines={1}
+                                    style={styles.text}>
+                                    {this.props.text}
+                                </Text>
+                            </LinearGradient>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                )
+
+        }
+    };
+
     render(): React.ReactNode {
         return (
-            <TouchableOpacity
-                activeOpacity={0.8}>
-                <ImageBackground
-                    source={this.props.photo}
-                    resideMode='cover'
-                    style={styles.imageBackground}>
-                    <LinearGradient
-                        style={{flex: 1, alignSelf: 'stretch', justifyContent: 'flex-end'}}
-                        colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(39,62,84,0.82)']}>
-                        <Text style={styles.header}>{this.props.header}</Text>
-                        <Text
-                            numberOfLines={1}
-                            style={styles.text}>
-                            {this.props.text}
-                        </Text>
-                    </LinearGradient>
-                </ImageBackground>
-            </TouchableOpacity>
+            this._switchCard(this.props.type)
         );
     }
 }
