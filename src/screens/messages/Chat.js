@@ -73,7 +73,7 @@ class Chat extends React.Component{
         :
             <View style={[styles.itemContainer, {flexDirection: 'row-reverse'}]}>
                 <View style={styles.textContainerReverse}>
-                    <Text style={[styles.text, {color: 'white'}]}>{item.text}</Text>
+                    <Text style={[styles.text, {color: 'white', marginRight: 5}]}>{item.text}</Text>
                 </View>
             </View>
     );
@@ -178,9 +178,10 @@ const styles = StyleSheet.create({
     },
     textContainerReverse: {
         alignSelf: 'flex-end',
+        alignItems: 'center',
         borderRadius: 20,
         backgroundColor: '#41abe1',
-        marginLeft: scale(35)+20,
+        marginLeft: scale(35)+60,
         marginRight: 20,
         paddingVertical: 8,
         paddingLeft: 12,

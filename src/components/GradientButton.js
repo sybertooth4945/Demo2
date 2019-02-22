@@ -1,6 +1,7 @@
 import React from "react";
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
+import { scale } from '../utils/scale';
 
 class GradientButton extends React.Component{
     render(): React.ReactNode {
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontFamily: 'Gill Sans',
         textAlign: 'center',
-        margin: 10,
+        margin: scale(10),
         color: '#ffffff',
         backgroundColor: 'transparent',
     },

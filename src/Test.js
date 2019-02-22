@@ -1,49 +1,79 @@
-import * as React from 'react';
-import {View, Text, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {scale, scaleVertical} from './utils/scale';
+import React from 'react';
+import {StyleSheet, FlatList, View, TouchableOpacity, Text} from 'react-native';
+import {articles} from './data';
+import {Card} from "./components";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {scale, scaleVertical} from "./utils/scale";
 
 class Test extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: articles,
+        }
+    }
+
+    _renderHeader = () => (
+        <View style={[styles.container, {backgroundColor: '#ffffff', elevation: 8}]}>
+            <View style={styles.split}>
+                <TouchableOpacity
+                    // onPress={this.props.onPress}
+                    style={styles.leftIcon}>
+                    <Icon
+                        name="chevron-left"
+                        color='black'
+                        size={20}
+                    />
+                </TouchableOpacity>
+            </View>
+            <View style={[styles.split, {alignItems: 'center'}]}>
+                <Text style={[styles.headerLabel, {color: 'black'}]}>TEST</Text>
+            </View>
+            <View style={styles.split}/>
+        </View>
+    );
+
+    _renderItem = ({item}) => (
+        <Card
+            type='full'
+            photo={item.photo}
+            header={item.header}
+            text={item.text}
+        />
+    );
+
+    _keyExtractor = (item) => item.id.toString();
+
     render(): React.ReactNode {
         return (
-            <TouchableOpacity
-                style={styles.container}>
-                <Image
-                    style={styles.avatar}
-                    resizeMode='cover'
-                    source={require('./assets/avatars/Image1.png')}
+            <View style={{flex: 1}}>
+                <FlatList
+                    data={this.state.data}
+                    keyExtractor={this._keyExtractor}
+                    renderItem={this._renderItem}
                 />
-                <View style={styles.detail}>
-                    <Text style={styles.name}>AAAAAAAAAAAAAAA</Text>
-                    <Text style={styles.email}>AAAAAA</Text>
-                </View>
-            </TouchableOpacity>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
+    container:{
+        height: scaleVertical(58),
+        width: '100%',
         flexDirection: 'row',
-        alignItems: 'center',
     },
-    avatar: {
-        height: scale(45),
-        width: scale(45),
-        borderRadius: 25,
-        margin: 10,
+    split:{
+        flex: 1,
+        justifyContent: 'center',
     },
-    detail: {
-        borderWidth: 1,
+    leftIcon:{
+        paddingLeft: 12
     },
-    name: {
+    headerLabel:{
         fontWeight: 'bold',
-        fontSize: scale(18),
-        color: 'black',
-    },
-    email: {
-        fontSize: scale(14),
-        color: '#999',
-    },
+        fontSize: scale(16),
+    }
 });
 
 export {Test};
